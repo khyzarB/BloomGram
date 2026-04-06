@@ -8,6 +8,8 @@ export default {
         primary: '#2d1b0e',
         muted: '#8b6b52',
         rose: '#e8637a',
+        sage: '#4a7c6f',
+        warm: '#fdf3e3',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],

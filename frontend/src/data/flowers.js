@@ -1,16 +1,25 @@
+import Rose from '../components/flowers/Rose';
+import Peony from '../components/flowers/Peony';
+import Tulip from '../components/flowers/Tulip';
+import Daisy from '../components/flowers/Daisy';
+import Sunflower from '../components/flowers/Sunflower';
+import Lily from '../components/flowers/Lily';
+import Lotus from '../components/flowers/Lotus';
+import Orchid from '../components/flowers/Orchid';
+import Lavender from '../components/flowers/Lavender';
+import CherryBlossom from '../components/flowers/CherryBlossom';
+
 const FLOWERS = [
-  { id: 'rose',       emoji: '🌹', name: 'Rose',            meaning: 'Deep love & passion',        color: '#e8637a' },
-  { id: 'peony',      emoji: '🌸', name: 'Peony',           meaning: 'Romance & prosperity',       color: '#f2a7c3' },
-  { id: 'tulip',      emoji: '🌷', name: 'Tulip',           meaning: 'Perfect, deep love',         color: '#f97448' },
-  { id: 'daisy',      emoji: '🌼', name: 'Daisy',           meaning: 'Innocence & new beginnings', color: '#fce96a' },
-  { id: 'lily',       emoji: '💐', name: 'Lily',            meaning: 'Elegance & devotion',        color: '#c084fc' },
-  { id: 'lotus',      emoji: '🪷', name: 'Lotus',           meaning: 'Resilience & rebirth',       color: '#e879f9' },
-  { id: 'sunflower',  emoji: '🌻', name: 'Sunflower',       meaning: 'Adoration & loyalty',        color: '#f59e0b' },
-  { id: 'hibiscus',   emoji: '🌺', name: 'Hibiscus',        meaning: 'Delicate beauty & charm',    color: '#fb923c' },
-  { id: 'orchid',     emoji: '🎋', name: 'Orchid',          meaning: 'Luxury & rare beauty',       color: '#a78bfa' },
-  { id: 'camellia',   emoji: '🌿', name: 'Camellia',        meaning: 'Admiration & longing',       color: '#34d399' },
-  { id: 'lavender',   emoji: '💜', name: 'Lavender',        meaning: 'Serenity & grace',           color: '#8b5cf6' },
-  { id: 'cherry',     emoji: '🌸', name: 'Cherry Blossom',  meaning: 'Beauty & renewal',           color: '#f9a8d4' },
+  { id: 'rose',      name: 'Rose',           meaning: 'Deep love & passion',        color: '#c9446a', Component: Rose },
+  { id: 'peony',     name: 'Peony',          meaning: 'Romance & prosperity',       color: '#f4b8c8', Component: Peony },
+  { id: 'tulip',     name: 'Tulip',          meaning: 'Perfect, deep love',         color: '#f97448', Component: Tulip },
+  { id: 'daisy',     name: 'Daisy',          meaning: 'Innocence & new beginnings', color: '#fbbf24', Component: Daisy },
+  { id: 'sunflower', name: 'Sunflower',      meaning: 'Adoration & loyalty',        color: '#f59e0b', Component: Sunflower },
+  { id: 'lily',      name: 'Lily',           meaning: 'Elegance & devotion',        color: '#c084fc', Component: Lily },
+  { id: 'lotus',     name: 'Lotus',          meaning: 'Resilience & rebirth',       color: '#f472b6', Component: Lotus },
+  { id: 'orchid',    name: 'Orchid',         meaning: 'Luxury & rare beauty',       color: '#8b5cf6', Component: Orchid },
+  { id: 'lavender',  name: 'Lavender',       meaning: 'Serenity & grace',           color: '#8b5cf6', Component: Lavender },
+  { id: 'cherry',    name: 'Cherry Blossom', meaning: 'Beauty & renewal',           color: '#f9a8d4', Component: CherryBlossom },
 ];
 
 export default FLOWERS;

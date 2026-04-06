@@ -7,33 +7,20 @@ export default function StepIndicator({ current }) {
         const step = i + 1;
         const isActive = step === current;
         const isDone = step < current;
-
         return (
           <div key={label} className="flex items-center">
             {i > 0 && (
-              <div
-                className={`w-6 sm:w-10 h-[2px] mx-1 sm:mx-2 transition-colors duration-300 ${
-                  isDone ? 'bg-rose' : 'bg-[rgba(180,140,100,0.2)]'
-                }`}
-              />
+              <div className={`w-6 sm:w-10 h-[1.5px] mx-1 sm:mx-2 transition-colors duration-500 ${isDone ? 'bg-rose' : 'bg-[rgba(180,140,100,0.15)]'}`} />
             )}
             <div className="flex flex-col items-center gap-1">
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-body font-bold transition-all duration-300 ${
-                  isActive
-                    ? 'bg-rose text-white scale-110'
-                    : isDone
-                    ? 'bg-rose/20 text-rose'
-                    : 'bg-[rgba(180,140,100,0.1)] text-muted'
-                }`}
-              >
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body font-bold transition-all duration-300 ${
+                isActive ? 'bg-rose text-white shadow-md shadow-rose/25 scale-110' :
+                isDone   ? 'bg-rose/15 text-rose' :
+                           'bg-[rgba(180,140,100,0.08)] text-muted/60'
+              }`}>
                 {isDone ? '✓' : step}
               </div>
-              <span
-                className={`text-[10px] sm:text-xs font-body transition-colors duration-300 ${
-                  isActive ? 'text-primary font-bold' : 'text-muted'
-                }`}
-              >
+              <span className={`text-[10px] sm:text-xs font-body transition-colors duration-300 ${isActive ? 'text-primary font-semibold' : 'text-muted/70'}`}>
                 {label}
               </span>
             </div>

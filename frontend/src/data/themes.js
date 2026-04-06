@@ -1,76 +1,17 @@
+import VintageCard from '../components/cards/VintageCard';
+import BlushCard from '../components/cards/BlushCard';
+import BotanicalCard from '../components/cards/BotanicalCard';
+import ElegantCard from '../components/cards/ElegantCard';
+import MidnightCard from '../components/cards/MidnightCard';
+import SunriseCard from '../components/cards/SunriseCard';
+
 const THEMES = [
-  {
-    id: 'blush',
-    name: 'Blush',
-    icon: '🌸',
-    headerBg: 'linear-gradient(135deg, #fff0f4, #ffd6e0)',
-    bodyBg: '#fff5f8',
-    headerText: '#6a1a2e',
-    bodyText: '#4a1020',
-    accent: '#e8637a',
-    fontStyle: 'normal',
-    border: '1px solid #f0c0cc',
-  },
-  {
-    id: 'botanical',
-    name: 'Botanical',
-    icon: '🌿',
-    headerBg: 'linear-gradient(135deg, #e8f5e8, #d4edda)',
-    bodyBg: '#f0f9f0',
-    headerText: '#1a3a1a',
-    bodyText: '#2d4d2d',
-    accent: '#2d7a2d',
-    fontStyle: 'normal',
-    border: '1px solid #b0d8b0',
-  },
-  {
-    id: 'vintage',
-    name: 'Vintage',
-    icon: '🕰️',
-    headerBg: 'linear-gradient(135deg, #fdf0e0, #f5deb3)',
-    bodyBg: '#fef7ea',
-    headerText: '#5a3a1a',
-    bodyText: '#4a3010',
-    accent: '#b07040',
-    fontStyle: 'italic',
-    border: '1px solid #d4a855',
-  },
-  {
-    id: 'elegant',
-    name: 'Elegant',
-    icon: '🌙',
-    headerBg: 'linear-gradient(135deg, #1a1a2e, #2d2d4e)',
-    bodyBg: '#16213e',
-    headerText: '#e8e0f0',
-    bodyText: '#d0c8e8',
-    accent: '#c9b8e8',
-    fontStyle: 'normal',
-    border: '1px solid #444466',
-  },
-  {
-    id: 'midnight',
-    name: 'Midnight',
-    icon: '✨',
-    headerBg: 'linear-gradient(135deg, #0a0a1a, #1a0828)',
-    bodyBg: '#110818',
-    headerText: '#ffd9f0',
-    bodyText: '#e8d0f8',
-    accent: '#d090f8',
-    fontStyle: 'normal',
-    border: '1px solid #330055',
-  },
-  {
-    id: 'sunrise',
-    name: 'Sunrise',
-    icon: '🌅',
-    headerBg: 'linear-gradient(135deg, #fff3e0, #ffe0b2)',
-    bodyBg: '#fff8f0',
-    headerText: '#4a1a00',
-    bodyText: '#3a1800',
-    accent: '#e06020',
-    fontStyle: 'normal',
-    border: '1px solid #f0a060',
-  },
+  { id: 'vintage',   name: 'Vintage',    icon: '🕰️', Component: VintageCard },
+  { id: 'blush',     name: 'Blush',      icon: '🌸', Component: BlushCard },
+  { id: 'botanical', name: 'Botanical',  icon: '🌿', Component: BotanicalCard },
+  { id: 'elegant',   name: 'Elegant',    icon: '🌙', Component: ElegantCard },
+  { id: 'midnight',  name: 'Midnight',   icon: '✨', Component: MidnightCard },
+  { id: 'sunrise',   name: 'Sunrise',    icon: '🌅', Component: SunriseCard },
 ];
 
 export default THEMES;
