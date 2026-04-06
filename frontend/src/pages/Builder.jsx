@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import THEMES from '../data/themes';
 import StepIndicator from '../components/StepIndicator';
 import FlowerPicker from '../components/FlowerPicker';
-import BouquetCanvas, { getDefaultPositions } from '../components/BouquetCanvas';
+import BouquetCanvas from '../components/BouquetCanvas';
 import CardPreview from '../components/CardPreview';
 
 const SUGGESTIONS = [
@@ -17,7 +17,6 @@ export default function Builder() {
   const [step, setStep] = useState(1);
   const [flowers, setFlowers] = useState([]);
   const [greenery, setGreenery] = useState([]);
-  const [positions, setPositions] = useState([]);
   const [theme, setTheme] = useState('vintage');
   const [toName, setToName] = useState('');
   const [fromName, setFromName] = useState('');
@@ -28,15 +27,11 @@ export default function Builder() {
 
   const addFlower = useCallback((id) => {
     if (flowers.length >= 12) return;
-    const next = [...flowers, id];
-    setFlowers(next);
-    setPositions(getDefaultPositions(next.length));
+    setFlowers([...flowers, id]);
   }, [flowers]);
 
   const removeFlower = useCallback((index) => {
-    const next = flowers.filter((_, i) => i !== index);
-    setFlowers(next);
-    setPositions(getDefaultPositions(next.length));
+    setFlowers(flowers.filter((_, i) => i !== index));
   }, [flowers]);
 
   const toggleGreenery = useCallback((id) => {
@@ -52,7 +47,7 @@ export default function Builder() {
       const res = await fetch('/api/bouquets', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ flowers, greenery, flowerPositions: positions, theme, toName: toName.trim(), fromName: fromName.trim(), message: message.trim() }),
+        body: JSON.stringify({ flowers, greenery, flowerPositions: [], theme, toName: toName.trim(), fromName: fromName.trim(), message: message.trim() }),
       });
       const text = await res.text();
       let data;
@@ -67,7 +62,7 @@ export default function Builder() {
   };
 
   const reset = () => {
-    setStep(1); setFlowers([]); setGreenery([]); setPositions([]);
+    setStep(1); setFlowers([]); setGreenery([]);
     setTheme('vintage'); setToName(''); setFromName(''); setMessage('');
     setShareUrl(null); setError('');
   };
@@ -118,9 +113,6 @@ export default function Builder() {
               <BouquetCanvas
                 flowers={flowers}
                 greenery={greenery}
-                positions={positions}
-                onPositionsChange={setPositions}
-                draggable={true}
               />
             </div>
           </div>
@@ -196,7 +188,7 @@ export default function Builder() {
             {!shareUrl && <p className="text-center text-muted text-sm font-body mb-4">Here's what they'll see</p>}
 
             <div className="bg-white rounded-3xl border border-[rgba(180,140,100,0.1)] p-4 shadow-sm mb-5">
-              <BouquetCanvas flowers={flowers} greenery={greenery} positions={positions} />
+              <BouquetCanvas flowers={flowers} greenery={greenery} />
             </div>
             <CardPreview theme={theme} toName={toName} fromName={fromName} message={message} />
 

@@ -81,8 +81,6 @@ export default function BouquetReveal() {
           <BouquetCanvas
             flowers={bouquet.flowers}
             greenery={bouquet.greenery}
-            positions={bouquet.flowerPositions}
-            animated={true}
           />
         </div>
 

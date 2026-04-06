@@ -1,40 +1,54 @@
-export default function LeafSpray({ width = 80, height = 180, flip = false }) {
-  const leaves = [
-    { x: 22, y: 20, r: -30, s: 0.9 },
-    { x: 35, y: 35, r: 20, s: 1.0 },
-    { x: 24, y: 55, r: -25, s: 1.1 },
-    { x: 36, y: 72, r: 15, s: 1.0 },
-    { x: 26, y: 90, r: -20, s: 1.05 },
-    { x: 38, y: 108, r: 12, s: 0.95 },
-    { x: 28, y: 125, r: -18, s: 0.9 },
-    { x: 36, y: 142, r: 10, s: 0.85 },
-  ];
+export default function LeafSpray({ width = 100, height = 230, flip = false }) {
+  const glossyLeaf = (cx, cy, rot, scale, shade) => (
+    <g transform={`translate(${cx},${cy}) rotate(${rot}) scale(${scale})`}>
+      {/* Base leaf shape */}
+      <path
+        d="M0,0 C-14,-4 -18,-18 -14,-34 C-10,-46 0,-50 0,-50 C0,-50 10,-46 14,-34 C18,-18 14,-4 0,0Z"
+        fill={shade}
+      />
+      {/* Dark shadow on right edge */}
+      <path
+        d="M0,0 C10,-4 14,-20 14,-34 C10,-46 0,-50 0,-50 L0,0Z"
+        fill="#14532d" opacity="0.35"
+      />
+      {/* Gloss highlight */}
+      <ellipse cx="-4" cy="-25" rx="4" ry="12" fill="white" opacity="0.18" />
+      {/* Midrib */}
+      <path d="M0,0 C0,-20 0,-40 0,-50" stroke="#166534" strokeWidth="0.8" fill="none" opacity="0.6" />
+      {/* Side veins */}
+      <line x1="0" y1="-12" x2="-10" y2="-18" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+      <line x1="0" y1="-12" x2="10" y2="-18" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+      <line x1="0" y1="-24" x2="-9" y2="-30" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+      <line x1="0" y1="-24" x2="9" y2="-30" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+      <line x1="0" y1="-36" x2="-7" y2="-40" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+      <line x1="0" y1="-36" x2="7" y2="-40" stroke="#15803d" strokeWidth="0.4" opacity="0.3" />
+    </g>
+  );
 
   return (
-    <svg
-      width={width} height={height}
-      viewBox="0 0 80 180"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={flip ? { transform: 'scaleX(-1)' } : undefined}
-    >
-      {/* Main stem */}
-      <path d="M38 175 C36 150, 32 110, 28 80 C24 50, 26 30, 26 10" stroke="#3a7a32" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-      {/* Branch stem */}
-      <path d="M30 80 C38 65, 42 50, 44 35" stroke="#3a7a32" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      {/* Leaves */}
-      {leaves.map((l, i) => (
-        <g key={i} transform={`translate(${l.x},${l.y}) rotate(${l.r}) scale(${l.s})`}>
-          <ellipse cx="0" cy="0" rx="12" ry="6" fill={i % 2 === 0 ? '#3a8a3a' : '#4a9a4a'} />
-          {/* Center vein */}
-          <line x1="-10" y1="0" x2="10" y2="0" stroke="#2d7a2d" strokeWidth="0.5" opacity="0.5" />
-          {/* Side veins */}
-          <line x1="-4" y1="0" x2="-7" y2="-3" stroke="#2d7a2d" strokeWidth="0.3" opacity="0.4" />
-          <line x1="-4" y1="0" x2="-7" y2="3" stroke="#2d7a2d" strokeWidth="0.3" opacity="0.4" />
-          <line x1="4" y1="0" x2="7" y2="-3" stroke="#2d7a2d" strokeWidth="0.3" opacity="0.4" />
-          <line x1="4" y1="0" x2="7" y2="3" stroke="#2d7a32" strokeWidth="0.3" opacity="0.4" />
-        </g>
-      ))}
+    <svg viewBox="0 0 100 230" width={width} height={height} xmlns="http://www.w3.org/2000/svg" style={flip ? { transform: "scaleX(-1)" } : undefined}>
+      {/* Central stem */}
+      <path d="M50,225 C48,190 44,150 40,115 C36,80 34,50 33,20" stroke="#14532d" strokeWidth="2.8" fill="none" strokeLinecap="round" />
+      {/* Branch left */}
+      <path d="M40,140 C32,118 24,98 16,75" stroke="#14532d" strokeWidth="2" fill="none" strokeLinecap="round" />
+      {/* Branch right */}
+      <path d="M38,105 C46,85 56,68 66,50" stroke="#14532d" strokeWidth="2" fill="none" strokeLinecap="round" />
+      {/* Small upper-left branch */}
+      <path d="M36,70 C28,55 22,42 18,28" stroke="#166534" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+
+      {/* Central stem leaves */}
+      {glossyLeaf(26, 25, -38, 1.05, '#15803d')}
+      {glossyLeaf(44, 55, 22, 1.15, '#166534')}
+      {glossyLeaf(30, 88, -32, 1.2, '#15803d')}
+      {glossyLeaf(46, 125, 18, 1.1, '#166534')}
+      {/* Left branch leaves */}
+      {glossyLeaf(22, 108, -48, 1.05, '#14532d')}
+      {glossyLeaf(16, 78, -55, 1.0, '#15803d')}
+      {/* Right branch leaves */}
+      {glossyLeaf(58, 62, 32, 1.1, '#166534')}
+      {glossyLeaf(66, 52, 42, 0.95, '#14532d')}
+      {/* Upper branch leaf */}
+      {glossyLeaf(18, 30, -52, 0.9, '#15803d')}
     </svg>
   );
 }

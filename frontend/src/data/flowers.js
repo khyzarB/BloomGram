@@ -22,4 +22,6 @@ const FLOWERS = [
   { id: 'cherry',    name: 'Cherry Blossom', meaning: 'Beauty & renewal',           color: '#f9a8d4', Component: CherryBlossom },
 ];
 
+export const FLOWER_MAP = Object.fromEntries(FLOWERS.map(f => [f.id, f.Component]));
+
 export default FLOWERS;

@@ -1,32 +1,49 @@
-export default function Lily({ width = 100, height = 140 }) {
+export default function Lily({ width = 120, height = 160 }) {
+  const lilyPetal = (rot, key) => (
+    <g key={key} transform={`rotate(${rot}, 60, 52)`}>
+      {/* Recurved petal — curves out then tips curl back */}
+      <path
+        d="M60,52 C52,47 48,24 52,8 C55,-4 60,-8 60,-8 C60,-8 65,-4 68,8 C72,24 68,47 60,52Z"
+        fill="#fefce8"
+      />
+      {/* Purple-pink flush at tip */}
+      <path
+        d="M60,-8 C55,-4 52,4 52,8 C56,0 58,-4 60,-8Z"
+        fill="#ddd6fe" opacity="0.7"
+      />
+      <path
+        d="M60,-8 C65,-4 68,4 68,8 C64,0 62,-4 60,-8Z"
+        fill="#c084fc" opacity="0.5"
+      />
+      {/* Shadow side */}
+      <path
+        d="M60,52 C54,48 50,30 52,12 C54,2 58,-4 60,-6 L60,52Z"
+        fill="#e8dcc8" opacity="0.3"
+      />
+      {/* Center vein */}
+      <line x1="60" y1="48" x2="60" y2="-4" stroke="#d4c8a0" strokeWidth="0.5" opacity="0.4" />
+    </g>
+  );
+
   return (
-    <svg width={width} height={height} viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 120 160" width={width} height={height} xmlns="http://www.w3.org/2000/svg">
       {/* Stem */}
-      <path d="M50 75 C48 90, 46 115, 48 138" stroke="#3a7a32" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M60,76 C58,92 56,120 58,155" stroke="#3a7a32" strokeWidth="3" strokeLinecap="round" fill="none" />
       {/* Leaves */}
-      <path d="M47 100 C30 92, 22 96, 22 104 C22 112, 35 110, 47 103" fill="#3a7a32" />
-      <path d="M49 120 C65 114, 74 118, 72 124 C70 130, 58 126, 49 122" fill="#2d5a27" />
-      {/* Outer petals — recurved, cream-white with purple tips */}
-      <path d="M20 50 C18 30, 30 10, 50 15 C35 12, 22 28, 20 50Z" fill="#fefce8" />
-      <path d="M80 50 C82 30, 70 10, 50 15 C65 12, 78 28, 80 50Z" fill="#fefce8" />
-      <path d="M25 60 C15 42, 28 18, 50 18 C32 20, 18 40, 25 60Z" fill="#fefce8" />
-      <path d="M75 60 C85 42, 72 18, 50 18 C68 20, 82 40, 75 60Z" fill="#fefce8" />
-      <path d="M35 65 C28 48, 36 25, 50 20 C40 28, 32 48, 35 65Z" fill="#fef9c3" />
-      <path d="M65 65 C72 48, 64 25, 50 20 C60 28, 68 48, 65 65Z" fill="#fef9c3" />
-      {/* Purple-pink tips */}
-      <path d="M20 48 C18 38, 24 22, 34 16 C26 25, 20 36, 20 48Z" fill="#c084fc" opacity="0.6" />
-      <path d="M80 48 C82 38, 76 22, 66 16 C74 25, 80 36, 80 48Z" fill="#c084fc" opacity="0.6" />
-      <path d="M25 56 C18 44, 24 28, 38 20 C28 30, 20 44, 25 56Z" fill="#c084fc" opacity="0.4" />
-      <path d="M75 56 C82 44, 76 28, 62 20 C72 30, 80 44, 75 56Z" fill="#c084fc" opacity="0.4" />
-      {/* Stamens */}
-      {[-12,-6,0,6,12].map((dx, i) => (
-        <g key={i}>
-          <line x1={50 + dx} y1="58" x2={50 + dx * 1.3} y2="35" stroke="#5a8a50" strokeWidth="1" />
-          <ellipse cx={50 + dx * 1.3} cy="33" rx="2.5" ry="3.5" fill="#f59e0b" />
+      <path d="M57,105 C36,94 24,98 24,108 C24,118 40,116 57,108Z" fill="#3a7a32" />
+      <path d="M59,130 C78,120 88,124 86,132 C84,140 70,136 59,132Z" fill="#2d5a27" />
+
+      {/* 6 petals at 60° intervals */}
+      {[0, 60, 120, 180, 240, 300].map((a, i) => lilyPetal(a, `p${i}`))}
+
+      {/* 6 stamens with orange anthers */}
+      {[-14, -8, -2, 4, 10, 16].map((dx, i) => (
+        <g key={`s${i}`}>
+          <line x1={60 + dx} y1="52" x2={60 + dx * 1.4} y2="30" stroke="#5a8a50" strokeWidth="1" />
+          <ellipse cx={60 + dx * 1.4} cy="28" rx="2.5" ry="4" fill="#ea580c" />
+          <ellipse cx={60 + dx * 1.4} cy="27" rx="1.5" ry="2.5" fill="#f97316" opacity="0.5" />
         </g>
       ))}
-      {/* Highlight */}
-      <ellipse cx="42" cy="35" rx="5" ry="10" fill="white" opacity="0.15" />
     </svg>
   );
 }

@@ -1,28 +1,67 @@
-export default function Tulip({ width = 100, height = 140 }) {
+export default function Tulip({ width = 120, height = 160 }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Stem */}
-      <path d="M50 70 C50 85, 49 110, 50 138" stroke="#2d5a27" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-      {/* Left strap leaf */}
-      <path d="M49 90 C30 75, 22 80, 20 90 C18 100, 35 100, 49 95" fill="#3a7a32" />
-      <path d="M49 92 C35 82, 26 86, 23 92" stroke="#2d5a27" strokeWidth="0.6" fill="none" />
-      {/* Right strap leaf */}
-      <path d="M51 105 C70 92, 78 96, 78 105 C78 114, 65 112, 51 108" fill="#2d5a27" />
-      {/* Calyx */}
-      <path d="M43 68 C43 73, 46 75, 50 75 C54 75, 57 73, 57 68" fill="#2d5a27" />
-      {/* Outer petals */}
-      <path d="M30 50 C28 30, 38 12, 50 10 C42 15, 32 30, 30 50Z" fill="#d45a2a" />
-      <path d="M70 50 C72 30, 62 12, 50 10 C58 15, 68 30, 70 50Z" fill="#d45a2a" />
-      <path d="M35 58 C30 40, 40 18, 50 14 C44 22, 34 40, 35 58Z" fill="#f97448" />
-      <path d="M65 58 C70 40, 60 18, 50 14 C56 22, 66 40, 65 58Z" fill="#f97448" />
-      {/* Inner petals */}
-      <path d="M40 55 C37 38, 44 20, 50 16 C46 25, 40 40, 40 55Z" fill="#fb9068" />
-      <path d="M60 55 C63 38, 56 20, 50 16 C54 25, 60 40, 60 55Z" fill="#fb9068" />
-      {/* Veining */}
-      <path d="M43 50 C42 38, 46 24, 50 16" stroke="#d45a2a" strokeWidth="0.5" opacity="0.5" fill="none" />
-      <path d="M57 50 C58 38, 54 24, 50 16" stroke="#d45a2a" strokeWidth="0.5" opacity="0.5" fill="none" />
+    <svg viewBox="0 0 120 160" width={width} height={height} xmlns="http://www.w3.org/2000/svg">
+
+      {/* STEM */}
+      <path d="M 60,158 C 60,140 59,125 60,105"
+            stroke="#2d6a27" strokeWidth="4" fill="none" strokeLinecap="round"/>
+
+      {/* LEAF — long strap leaf curving left */}
+      <path d="M 56,130 C 46,118 34,108 26,92 C 34,90 48,98 58,112 Z"
+            fill="#3a8a30"/>
+      <path d="M 56,130 C 46,118 36,106 26,92"
+            stroke="#2a6a22" strokeWidth="1" fill="none"/>
+
+      {/* LEAF — long strap leaf curving right */}
+      <path d="M 64,138 C 74,124 88,112 94,96 C 86,94 72,104 64,120 Z"
+            fill="#3a8a30"/>
+
+      {/* 3 OUTER PETALS — form the main cup */}
+
+      {/* Center outer petal — faces viewer */}
+      <path d="M 60,106 C 46,100 38,84 40,66 C 42,52 50,42 60,40 C 70,42 78,52 80,66 C 82,84 74,100 60,106 Z"
+            fill="#e8623a"/>
+      {/* Shadow on left side */}
+      <path d="M 60,106 C 46,100 38,84 40,66 C 42,52 50,42 60,40 L 60,106 Z"
+            fill="#c84a24" opacity="0.35"/>
+
+      {/* Left outer petal */}
+      <path d="M 60,104 C 48,100 36,86 36,68 C 36,52 44,40 54,38 C 48,50 46,68 50,86 C 52,96 56,102 60,104 Z"
+            fill="#d45830"/>
+
+      {/* Right outer petal */}
+      <path d="M 60,104 C 72,100 84,86 84,68 C 84,52 76,40 66,38 C 72,50 74,68 70,86 C 68,96 64,102 60,104 Z"
+            fill="#d45830"/>
+
+      {/* 3 INNER PETALS — lighter, peek above outer */}
+
+      {/* Inner center */}
+      <path d="M 60,100 C 50,94 46,78 48,62 C 50,50 56,43 60,42 C 64,43 70,50 72,62 C 74,78 70,94 60,100 Z"
+            fill="#f07848"/>
       {/* Highlight */}
-      <ellipse cx="45" cy="30" rx="4" ry="10" fill="#fdb" opacity="0.2" transform="rotate(-8 45 30)" />
+      <path d="M 60,98 C 56,88 54,72 56,58 C 57,50 59,44 60,43 C 61,44 62,50 63,58 C 65,72 64,88 60,98 Z"
+            fill="#f8a888" opacity="0.6"/>
+
+      {/* Inner left */}
+      <path d="M 60,100 C 50,96 44,80 46,64 C 48,50 54,42 60,41 C 54,52 52,70 54,86 C 56,94 58,98 60,100 Z"
+            fill="#ee7040"/>
+
+      {/* Inner right */}
+      <path d="M 60,100 C 70,96 76,80 74,64 C 72,50 66,42 60,41 C 66,52 68,70 66,86 C 64,94 62,98 60,100 Z"
+            fill="#ee7040"/>
+
+      {/* PETAL TIPS at top */}
+      <path d="M 50,42 C 48,36 50,30 54,32 C 56,34 56,38 54,42 Z"
+            fill="#d45830"/>
+      <path d="M 60,40 C 58,34 60,28 62,28 C 64,28 62,34 60,40 Z"
+            fill="#e06038"/>
+      <path d="M 70,42 C 72,36 70,30 66,32 C 64,34 64,38 66,42 Z"
+            fill="#d45830"/>
+
+      {/* BASE SEPAL */}
+      <path d="M 48,104 C 46,110 50,115 60,116 C 70,115 74,110 72,104"
+            fill="#3a7a2a" opacity="0.8"/>
+
     </svg>
   );
 }

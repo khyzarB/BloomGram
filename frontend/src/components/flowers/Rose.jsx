@@ -1,32 +1,67 @@
-export default function Rose({ width = 100, height = 140 }) {
+export default function Rose({ width = 120, height = 160 }) {
   return (
-    <svg width={width} height={height} viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Stem */}
-      <path d="M50 75 C48 90, 46 110, 48 135" stroke="#2d5a27" strokeWidth="3" strokeLinecap="round" fill="none" />
-      {/* Left leaf */}
-      <path d="M47 100 C35 90, 25 92, 22 98 C19 104, 28 108, 47 102" fill="#2d5a27" />
-      <path d="M47 101 C35 95, 28 98, 25 100" stroke="#1e4620" strokeWidth="0.5" fill="none" />
-      {/* Right leaf */}
-      <path d="M49 112 C62 104, 72 106, 75 112 C78 118, 68 120, 49 114" fill="#3a7a32" />
-      <path d="M49 113 C62 107, 70 110, 73 113" stroke="#2d5a27" strokeWidth="0.5" fill="none" />
-      {/* Calyx */}
-      <path d="M43 72 C42 76, 44 78, 50 78 C56 78, 58 76, 57 72" fill="#2d5a27" />
-      {/* Outer petals — deep rose */}
-      <ellipse cx="35" cy="52" rx="18" ry="22" fill="#9e2f4f" transform="rotate(-15 35 52)" />
-      <ellipse cx="65" cy="52" rx="18" ry="22" fill="#9e2f4f" transform="rotate(15 65 52)" />
-      <ellipse cx="50" cy="40" rx="18" ry="20" fill="#9e2f4f" transform="rotate(0 50 40)" />
-      {/* Mid petals — rose */}
-      <ellipse cx="40" cy="50" rx="14" ry="18" fill="#c9446a" transform="rotate(-8 40 50)" />
-      <ellipse cx="60" cy="50" rx="14" ry="18" fill="#c9446a" transform="rotate(8 60 50)" />
-      <ellipse cx="50" cy="42" rx="14" ry="16" fill="#c9446a" />
-      {/* Inner petals — light rose */}
-      <ellipse cx="45" cy="48" rx="10" ry="13" fill="#e8637a" transform="rotate(-5 45 48)" />
-      <ellipse cx="55" cy="48" rx="10" ry="13" fill="#e8637a" transform="rotate(5 55 48)" />
-      {/* Center spiral */}
-      <path d="M50 44 C52 42, 55 44, 53 47 C51 50, 47 48, 49 45 C50 43, 52 43, 51 45" fill="#9e2f4f" />
-      <circle cx="50" cy="45" r="3" fill="#b83a5a" />
-      {/* Highlights */}
-      <ellipse cx="43" cy="43" rx="5" ry="7" fill="#f0a0b8" opacity="0.3" />
+    <svg viewBox="0 0 120 160" width={width} height={height} xmlns="http://www.w3.org/2000/svg">
+
+      {/* STEM */}
+      <path d="M 60,155 C 58,130 56,110 58,95"
+            stroke="#2d6a27" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+
+      {/* LEAF LEFT */}
+      <path d="M 56,120 C 44,112 36,106 32,98 C 38,96 48,100 56,108 Z"
+            fill="#2d7a27"/>
+      <path d="M 56,120 C 50,112 42,106 32,98"
+            stroke="#1a5a18" strokeWidth="0.8" fill="none"/>
+
+      {/* LEAF RIGHT */}
+      <path d="M 62,128 C 74,118 82,112 88,104 C 82,102 72,108 64,116 Z"
+            fill="#2d7a27"/>
+
+      {/* OUTER PETALS — 5 petals spreading wide */}
+      <path d="M 60,90 C 38,86 28,72 32,58 C 36,48 46,46 52,52 C 50,60 52,76 60,90 Z"
+            fill="#c9446a"/>
+      <path d="M 60,90 C 42,84 34,70 36,58 C 38,52 44,48 52,52"
+            stroke="#a8304f" strokeWidth="0.6" fill="none" opacity="0.5"/>
+
+      <path d="M 60,90 C 82,86 92,72 88,58 C 84,48 74,46 68,52 C 70,60 68,76 60,90 Z"
+            fill="#c9446a"/>
+
+      <path d="M 60,90 C 40,78 30,62 36,48 C 40,38 52,36 56,44 C 52,52 52,70 60,90 Z"
+            fill="#be3d62"/>
+
+      <path d="M 60,90 C 80,78 90,62 84,48 C 80,38 68,36 64,44 C 68,52 68,70 60,90 Z"
+            fill="#be3d62"/>
+
+      <path d="M 60,90 C 48,68 46,50 54,38 C 58,30 62,30 66,38 C 74,50 72,68 60,90 Z"
+            fill="#d4546e"/>
+
+      {/* MIDDLE PETALS — 4 petals, more cupped, lighter */}
+      <path d="M 60,84 C 44,76 38,62 42,50 C 46,42 54,42 58,50 C 56,60 56,72 60,84 Z"
+            fill="#d96080"/>
+
+      <path d="M 60,84 C 76,76 82,62 78,50 C 74,42 66,42 62,50 C 64,60 64,72 60,84 Z"
+            fill="#d96080"/>
+
+      <path d="M 60,84 C 48,68 46,54 52,44 C 56,38 62,40 64,48 C 62,58 60,72 60,84 Z"
+            fill="#e06888"/>
+
+      <path d="M 60,84 C 72,68 74,54 68,44 C 64,38 58,40 56,48 C 58,58 60,72 60,84 Z"
+            fill="#e06888"/>
+
+      {/* INNER PETALS — 3 tight petals, palest */}
+      <path d="M 60,78 C 50,70 48,58 54,50 C 58,44 64,46 64,54 C 63,62 61,72 60,78 Z"
+            fill="#f090a0"/>
+      <path d="M 60,78 C 70,70 72,58 66,50 C 62,44 56,46 56,54 C 57,62 59,72 60,78 Z"
+            fill="#f090a0"/>
+      <path d="M 60,78 C 52,68 52,56 58,50 C 60,47 62,47 64,50 C 68,56 68,68 60,78 Z"
+            fill="#f8b0b8"/>
+
+      {/* CENTER SPIRAL */}
+      <ellipse cx="60" cy="62" rx="8" ry="7" fill="#e8607a"/>
+      <path d="M 60,58 C 56,60 55,64 58,67 C 60,69 63,68 64,65 C 65,62 63,59 60,58 Z"
+            fill="#c04060"/>
+      <path d="M 60,60 C 58,62 59,65 62,65"
+            stroke="#a03050" strokeWidth="0.8" fill="none"/>
+
     </svg>
   );
 }

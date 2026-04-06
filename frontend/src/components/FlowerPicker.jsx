@@ -35,7 +35,7 @@ export default function FlowerPicker({
                 </span>
               )}
               <div className="flex justify-center mb-1.5" style={{ filter: `drop-shadow(0 2px 4px ${flower.color}30)` }}>
-                <flower.Component width={55} height={70} />
+                <svg width={55} height={70} viewBox="0 0 55 70" overflow="visible"><flower.Component width={55} height={70} /></svg>
               </div>
               <div className="font-display font-semibold text-xs text-primary leading-tight">{flower.name}</div>
               <div className="text-[9px] text-muted mt-0.5 leading-tight font-body opacity-70">{flower.meaning}</div>
@@ -80,7 +80,7 @@ export default function FlowerPicker({
                   <span className="absolute -top-1 -right-1 w-4 h-4 bg-sage text-white text-[8px] rounded-full flex items-center justify-center">✓</span>
                 )}
                 <div className="flex justify-center mb-1 opacity-80">
-                  <g.Component width={36} height={55} />
+                  <svg width={36} height={55} viewBox="0 0 36 55" overflow="visible"><g.Component width={36} height={55} /></svg>
                 </div>
                 <div className="text-[10px] font-body font-medium text-primary">{g.name}</div>
               </button>

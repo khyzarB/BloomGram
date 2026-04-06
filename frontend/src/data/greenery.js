@@ -12,4 +12,6 @@ const GREENERY = [
   { id: 'leafspray',  name: 'Leaf Spray',   desc: 'Simple oval leaves',    Component: LeafSpray },
 ];
 
+export const GREENERY_MAP = Object.fromEntries(GREENERY.map(g => [g.id, g.Component]));
+
 export default GREENERY;
