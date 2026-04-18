@@ -11,14 +11,6 @@ A digital bouquet builder — pick illustrated SVG flowers, add lush greenery, a
 ## Setup
 
 ```bash
-# Backend (Terminal 1)
-cd backend
-npm install
-node index.js
-# → http://localhost:3001
-
-# Frontend (Terminal 2)
-cd frontend
 npm install
 npm run dev
 # → http://localhost:5173
