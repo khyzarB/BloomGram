@@ -13,20 +13,18 @@ export default function BouquetReveal() {
   const [cardExpanded, setCardExpanded] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/bouquets/${id}`)
-      .then(async res => {
-        if (!res.ok) throw new Error();
-        return JSON.parse(await res.text());
-      })
-      .then(data => {
-        setBouquet(data);
-        setLoading(false);
-        // Card appears after bouquet animation completes
-        const greeneryTime = (data.greenery?.length || 0) * 150;
-        const flowerTime = data.flowers.length * 250;
-        setTimeout(() => setShowCard(true), greeneryTime + flowerTime + 1200);
-      })
-      .catch(() => { setError(true); setLoading(false); });
+    try {
+      const decoded = JSON.parse(decodeURIComponent(atob(id)));
+      const data = { flowers: decoded.f, greenery: decoded.g, theme: decoded.t, toName: decoded.to, fromName: decoded.fr, message: decoded.m };
+      setBouquet(data);
+      setLoading(false);
+      const greeneryTime = (data.greenery?.length || 0) * 150;
+      const flowerTime = data.flowers.length * 250;
+      setTimeout(() => setShowCard(true), greeneryTime + flowerTime + 1200);
+    } catch {
+      setError(true);
+      setLoading(false);
+    }
   }, [id]);
 
   if (loading) {

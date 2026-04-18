@@ -22,7 +22,7 @@ export default function Builder() {
   const [fromName, setFromName] = useState('');
   const [message, setMessage] = useState('');
   const [shareUrl, setShareUrl] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [error, setError] = useState('');
 
   const addFlower = useCallback((id) => {
@@ -40,24 +40,14 @@ export default function Builder() {
     );
   }, []);
 
-  const handleCreate = async () => {
-    setLoading(true);
+  const handleCreate = () => {
     setError('');
     try {
-      const res = await fetch('/api/bouquets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ flowers, greenery, flowerPositions: [], theme, toName: toName.trim(), fromName: fromName.trim(), message: message.trim() }),
-      });
-      const text = await res.text();
-      let data;
-      try { data = JSON.parse(text); } catch { throw new Error('Backend not responding. Is it running?'); }
-      if (!res.ok) throw new Error(data.error || 'Something went wrong');
-      setShareUrl(data.url);
+      const payload = { f: flowers, g: greenery, t: theme, to: toName.trim(), fr: fromName.trim(), m: message.trim() };
+      const encoded = btoa(encodeURIComponent(JSON.stringify(payload)));
+      setShareUrl(`/bouquet/${encoded}`);
     } catch (err) {
       setError(err.message);
-    } finally {
-      setLoading(false);
     }
   };
 
